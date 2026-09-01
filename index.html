@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Executivo · Missão Araxá</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#122A46">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="shell">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar">
+    <div class="org">
+      <div class="org-mark">A</div>
+      <div>
+        <div class="org-name">Assembleia de Deus</div>
+        <div class="org-sub">Missão Araxá</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-item active" data-page="overview">
+        <span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+        <span class="nav-text"><span class="nav-title">Visão geral</span><span class="nav-desc">KPIs e síntese</span></span>
+      </button>
+      <button class="nav-item" data-page="lancamentos">
+        <span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="4" cy="6" r="0.1"/></svg></span>
+        <span class="nav-text"><span class="nav-title">Lançamentos</span><span class="nav-desc">Receitas e despesas</span></span>
+      </button>
+      <button class="nav-item" data-page="relatorios">
+        <span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/></svg></span>
+        <span class="nav-text"><span class="nav-title">Relatórios</span><span class="nav-desc">Fechamento mensal</span></span>
+      </button>
+      <button class="nav-item" data-page="config">
+        <span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+        <span class="nav-text"><span class="nav-title">Configurações</span><span class="nav-desc">Cadastros e regras</span></span>
+      </button>
+    </nav>
+
+    <div class="sidebar-foot">Dados salvos neste navegador</div>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <main>
+
+    <!-- ---------- PÁGINA: VISÃO GERAL ---------- -->
+    <section id="page-overview" class="page active">
+      <div class="topbar">
+        <div>
+          <div class="eyebrow">PAINEL EXECUTIVO</div>
+          <h1>Visão geral</h1>
+          <p class="lead">Uma leitura limpa do caixa para decidir com segurança — agora e no próximo fechamento.</p>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" id="btnPrint">Imprimir</button>
+          <button class="btn btn-dark" id="btnNewMonthTop">+ Novo lançamento</button>
+        </div>
+      </div>
+
+      <div class="period-card">
+        <div class="period-left">
+          <span class="period-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg></span>
+          <div>
+            <div class="period-label">Período de análise</div>
+            <div class="period-value" id="periodLabel">—</div>
+          </div>
+        </div>
+        <div class="period-right">
+          <select id="periodSelect"></select>
+          <span class="period-hint" id="periodHint">—</span>
+        </div>
+      </div>
+
+      <div class="kpi-row" id="kpiRow"></div>
+
+      <div class="insight-card" id="insightCard"></div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <div class="eyebrow">VISÃO MENSAL</div>
+            <h2>Fluxo de caixa</h2>
+          </div>
+          <div class="legend">
+            <span class="leg"><i style="background:var(--teal)"></i>Receitas</span>
+            <span class="leg"><i style="background:var(--orange)"></i>Despesas</span>
+            <span class="leg"><i style="background:var(--navy)"></i>Saldo</span>
+          </div>
+        </div>
+        <div class="chart-wrap tall"><canvas id="chartFlow"></canvas></div>
+      </div>
+
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-head"><h2>Segmentação das receitas</h2></div>
+          <div class="chart-wrap"><canvas id="chartReceitas"></canvas></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Despesas por grupo</h2></div>
+          <div class="chart-wrap"><canvas id="chartGrupos"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- PÁGINA: LANÇAMENTOS ---------- -->
+    <section id="page-lancamentos" class="page">
+      <div class="topbar">
+        <div>
+          <div class="eyebrow">LANÇAMENTOS</div>
+          <h1>Receitas e despesas</h1>
+          <p class="lead">Edite os valores do período selecionado — os totais recalculam automaticamente.</p>
+        </div>
+        <div class="actions">
+          <span class="period-hint" id="lancMonthLabel"></span>
+        </div>
+      </div>
+      <div class="panel">
+        <table class="cat-table" id="lancTable">
+          <thead><tr><th>Categoria</th><th class="num">Valor (R$)</th></tr></thead>
+          <tbody id="lancTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ---------- PÁGINA: RELATÓRIOS ---------- -->
+    <section id="page-relatorios" class="page">
+      <div class="topbar">
+        <div>
+          <div class="eyebrow">RELATÓRIOS</div>
+          <h1>Fechamento mensal</h1>
+          <p class="lead">Ranking de despesas e o histórico completo mês a mês.</p>
+        </div>
+        <div class="actions">
+          <button class="btn btn-dark" id="btnExportCSV">↓ Exportar CSV</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-head"><h2>Top 5 maiores despesas</h2></div>
+          <ul class="top5" id="top5List"></ul>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Peso por grupo de despesa</h2></div>
+          <div class="chart-wrap"><canvas id="chartGrupos2"></canvas></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>Resumo mês a mês</h2></div>
+        <table class="cat-table">
+          <thead><tr><th>Mês</th><th class="num">Receitas</th><th class="num">Despesas</th><th class="num">Saldo do mês</th><th class="num">Saldo acumulado</th></tr></thead>
+          <tbody id="resumoTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ---------- PÁGINA: CONFIGURAÇÕES ---------- -->
+    <section id="page-config" class="page">
+      <div class="topbar">
+        <div>
+          <div class="eyebrow">CONFIGURAÇÕES</div>
+          <h1>Cadastros e regras</h1>
+          <p class="lead">Gerencie os meses lançados e o backup dos dados deste painel.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>Meses lançados</h2></div>
+        <table class="cat-table">
+          <thead><tr><th>Mês</th><th class="num">Saldo anterior</th><th class="num">Ações</th></tr></thead>
+          <tbody id="configMonthsBody"></tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>Backup dos dados</h2></div>
+        <p class="lead" style="margin:0 0 14px;">Os dados ficam salvos apenas neste navegador. Exporte um backup regularmente.</p>
+        <div class="actions">
+          <button class="btn btn-dark" id="btnBackupExport">Exportar backup (JSON)</button>
+          <button class="btn btn-ghost" id="btnBackupImport">Importar backup</button>
+          <button class="btn btn-ghost" id="btnRestoreSeed">Restaurar dados de exemplo</button>
+          <input type="file" id="fileImport" accept="application/json" style="display:none">
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>Grupos de despesa</h2></div>
+        <p class="lead" style="margin:0;">As 44 categorias do relatório original estão organizadas nos grupos: Pessoal e Encargos, Imóvel e Estrutura, Veículos, Administrativo, Social e Missões, Eventos e Diversos.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ===================== MODAL: NOVO MÊS ===================== -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <h3>Lançar novo mês</h3>
+    <label>Mês de referência</label>
+    <input type="month" id="newMonthInput">
+    <label>Saldo do mês anterior (R$)</label>
+    <input type="number" step="0.01" id="newMonthSaldoAnterior" placeholder="preenchido automaticamente">
+    <div class="row">
+      <button class="btn btn-ghost" id="btnCancelNew">Cancelar</button>
+      <button class="btn btn-dark" id="btnConfirmNew">Criar mês</button>
+    </div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
